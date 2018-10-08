@@ -1,0 +1,3 @@
+---
+
+- include: varnish_repo.yml
