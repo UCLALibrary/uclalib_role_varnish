@@ -5,7 +5,8 @@
     description: Varnish Cache {{ varnish_vers }}
     file: varnish
     baseurl: https://packagecloud.io/varnishcache/varnish{{ varnish_vers }}/el/{{ ansible_distribution_major_version }}/$basearch
-    gpgcheck: yes
+    repo_gpgcheck: yes
+    gpgcheck: no
     gpgkey: https://packagecloud.io/varnishcache/varnish{{ varnish_vers }}/gpgkey
     sslverify: yes
     sslcacert: /etc/pki/tls/certs/ca-bundle.crt
@@ -17,7 +18,8 @@
     description: Varnish Cache {{ varnish_vers }} Source
     file: varnish
     baseurl: https://packagecloud.io/varnishcache/varnish{{ varnish_vers }}/el/{{ ansible_distribution_major_version }}/SRPMS
-    gpgcheck: yes
+    repo_gpgcheck: yes
+    gpgcheck: no
     gpgkey: https://packagecloud.io/varnishcache/varnish{{ varnish_vers }}/gpgkey
     sslverify: yes
     sslcacert: /etc/pki/tls/certs/ca-bundle.crt

@@ -1,0 +1,12 @@
+---
+
+- name: Install Varnish
+  package:
+    name: varnish
+    state: present
+
+- name: Start varnish services on boot
+  service:
+    name: "{{ item }}"
+    enabled: yes
+  with_items: "{{ varnish_services }}"

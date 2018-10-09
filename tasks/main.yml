@@ -1,3 +1,5 @@
 ---
 
 - include: varnish_repo.yml
+
+- include: install.yml
