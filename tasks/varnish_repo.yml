@@ -1,0 +1,26 @@
+---
+- name: Add Varnish Cache Repository
+  yum_repository:
+    name: varnishcache_varnish{{ varnish_vers }}
+    description: Varnish Cache {{ varnish_vers }}
+    file: varnish
+    baseurl: https://packagecloud.io/varnishcache/varnish{{ varnish_vers }}/el/{{ ansible_distribution_major_version }}/$basearch
+    repo_gpgcheck: yes
+    gpgcheck: no
+    gpgkey: https://packagecloud.io/varnishcache/varnish{{ varnish_vers }}/gpgkey
+    sslverify: yes
+    sslcacert: /etc/pki/tls/certs/ca-bundle.crt
+    metadata_expire: 300
+
+- name: Add Varnish Cache Source Repository
+  yum_repository:
+    name: varnishcache_varnish{{ varnish_vers }}-source
+    description: Varnish Cache {{ varnish_vers }} Source
+    file: varnish
+    baseurl: https://packagecloud.io/varnishcache/varnish{{ varnish_vers }}/el/{{ ansible_distribution_major_version }}/SRPMS
+    repo_gpgcheck: yes
+    gpgcheck: no
+    gpgkey: https://packagecloud.io/varnishcache/varnish{{ varnish_vers }}/gpgkey
+    sslverify: yes
+    sslcacert: /etc/pki/tls/certs/ca-bundle.crt
+    metadata_expire: 300

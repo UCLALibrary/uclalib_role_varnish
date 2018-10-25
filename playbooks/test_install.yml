@@ -1,0 +1,7 @@
+---
+
+- name: test_install.yml
+  hosts: all
+
+  roles:
+    - { role: uclalib_role_varnish }
