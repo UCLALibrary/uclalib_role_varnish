@@ -1,9 +1,10 @@
 ---
 
 - name: Install Varnish
-  package:
+  yum:
     name: varnish
     state: present
+    disable_excludes: all
 
 - name: Start varnish services on boot
   service:
