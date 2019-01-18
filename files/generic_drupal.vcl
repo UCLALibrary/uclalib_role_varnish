@@ -16,21 +16,9 @@ vcl 4.0;
 backend default {
     .host = "localhost";
     .port = "80";
-#    .probe = {
-#        .url = "/";
-#        .timeout = 5s;
-#        .interval = 5s;
-#        .window = 5;
-#        .threshold = 3;
-#    }
 }
 
 sub vcl_recv {
-    # Happens before we check if we have this in cache already.
-    #
-    # Typically you clean up the request here, removing cookies you don't need,
-    # rewriting the request, etc.
-
     # Do not cache these paths.
     if (req.url ~ "^/status\.php$" ||
         req.url ~ "^/update\.php" ||
