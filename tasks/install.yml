@@ -20,3 +20,14 @@
     group: root
     mode: 0644
   notify: Restart varnish services
+  when: varnish_type != 'drupal'
+
+- name: Copy drupal generic varnish VCL
+  copy:
+    src: generic_drupal.vcl
+    dest: /etc/varnish/default.vcl
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart varnish services
+  when: varnish_type == 'drupal'

@@ -4,3 +4,5 @@ varnish_vers: 61
 varnish_services:
   - varnish
   - varnishncsa
+
+varnish_type: generic
