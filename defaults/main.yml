@@ -5,4 +5,5 @@ varnish_services:
   - varnish
   - varnishncsa
 
-varnish_type: generic
+varnish_systemd_args: "-a :6081 -f /etc/varnish/default.vcl -S /etc/varnish/secret -s malloc,256m -s file,/var/lib/varnish/varnish_storage.bin,1G"
+varnish_secret: abcdefgh

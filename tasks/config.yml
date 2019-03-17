@@ -1,0 +1,43 @@
+---
+- name: Copy Varnish Secret
+  copy:
+    content: "{{ varnish_secret }}"
+    dest: /etc/varnish/secret
+    owner: root
+    group: root
+    mode: 0600
+  no_log: True
+
+- name: Copy generic varnish VCL
+  copy:
+    src: generic_vcl
+    dest: /etc/varnish/default.vcl
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart varnish services
+  when: varnish_vcl_src is undefined
+
+- name: Copy custom varnish VCL
+  template:
+    src: "{{ varnish_vcl_src }}"
+    dest: /etc/varnish/default.vcl
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart varnish services
+  when: varnish_vcl_src is defined
+
+- name: Configure varnish systemd unit file
+  template:
+    src: systemd-varnish.service.j2
+    dest: /usr/lib/systemd/system/varnish.service
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Trigger systemd to read updated config
+  systemd:
+    name: varnish
+    state: restarted
+    daemon_reload: yes
