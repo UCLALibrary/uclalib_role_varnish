@@ -22,7 +22,7 @@ TasksMax=infinity
 LimitCORE=infinity
 
 
-ExecStart=/usr/sbin/varnishd "{{ varnish_systemd_args }}"
+ExecStart=/usr/sbin/varnishd {{ varnish_systemd_args }}
 ExecReload=/usr/sbin/varnishreload
 
 [Install]
